@@ -2,7 +2,7 @@
 
 **Goal**: Provide just one (unix-time) getter obtain reactive date value; should mimic `Date.now()`.
 
-**Other Formats?**: Obtain manually as `Date` constructor takes a unix-time argument - and this package provides reactive unix-time.
+**Other Date Formats?**: Obtain manually as `Date` constructor takes a unix-time argument - and this package provides reactive unix-time.
 
 **Underneath**: Polling interval with configurable period.
 
