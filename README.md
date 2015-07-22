@@ -1,3 +1,5 @@
+# reactive-date
+
 **Goal**: Provide a **single** reactive endpoint into the current date via unix-time. From here, other formats and the full blown Date object can be obtained manually; this package is very minimal (8-10 LOC). We do not need to implement reactivity for all of the formats because they are interchangable.
 
 ---
