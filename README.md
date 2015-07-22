@@ -1,47 +1,32 @@
 # reactive-date
 
-**Goal**: Provide just one readable endpoint to obtain a reactive date value; usage feeling should mimic `Date.now()`.
+**Goal**: Provide just one (unix-time) getter obtain reactive date value; should mimic `Date.now()`.
 
-**Other Reactive Date Formats?**: Did not implement these since other formats can be obtained manually as `Date` constructor takes unix-time as an argument - and this package provides reactive unix-time.
+**Other Formats?**: Obtain manually as `Date` constructor takes a unix-time argument - and this package provides reactive unix-time.
 
-**Underneath**: Time itself is a poll in certain sense, so use polling interval with configurable period.
+**Underneath**: Polling interval with configurable period.
 
-**Tip**: The argument to `ReactiveDate` should be on the order of the smallest unit of time you display to the users. For example, if you display time in minutes, then updating the date every 20 minutes will reveal that your displayed date is not in real-time. But updating it every 12 seconds will make it seem as if it is updating in real-time, which is what matters.
+**Tip**: The argument to `ReactiveDate` should at most be on the order of the smallest unit of time you display to the users. Then, it will feel real-time.
 
 ---
 
-## Full API (via example)
+## Full API
 
 Constructor: `ReactiveDate`.
+```
+//client
+var updateInterval = 140 //milliseconds, defaults to 1000 if not provided
+var reactiveDate = new ReactiveDate(updateInterval)
+```
 
 Methods: `now`, `stop`.
-
 ```
-//argument is number of ms until computation is invalidated
-//defaults to 1000ms
-var rDate = new ReactiveDate(120);
-
-Tracker.autorun(function(){
-  //vanilla Date.now() is non reactive.
-  console.log('this code runs one time at ', Date.now())
-})
-
-Tracker.autorun(function(){
-  //rDate.now() is reactive
-  console.log('this code ran at %s and it will run again in 120ms.', rDate.now())
-})
-
-Tracker.autorun(function(){
-  //this is reactive since we call rDate.now()
-  var myFavFormat = rDate.now()
-  //this new variable will contain all the methods on Date
-  var yourFavFormat = new Date(myFavFormat)
-  console.log('%s and your favorite format will also log every 120ms', yourFavFormat)
-})
-
-//when you are done, don't forget to call rDate.stop() to clear the interval
-//or else it will continue. Template's destroyed callback is useful for this.
-//Alternatively, keep a global instance and use it everywhere
-//instead of having many different instances.
+//client
+Date.now() //vanilla method for getting non-reactive unix-time.
+reactiveDate.now() //returns reactive unix-time (e.g. 1437554051424)
+reactiveDate.stop() //clears the interval. MUST call this before deleting the object.
 ```
 
+**For Most Use Cases**: You can instantiate one global `ReactiveDate` per client, and use it throughout the entire app, and you don't ever need to worry about the `stop` method. 
+
+**For Special Cases**: When having one universal variable doesn't cut it, you need to manage your intervals. When you're done with an instance, call the `stop` method to clear the interval. Don't lose the reference. The easiest and most natural way to manage this is to have these `ReactiveDate` instances tacked onto your `Template` instances, and then make use of the `onDestroyed` callback. If not, you can create your own global cache and store your `ReactiveDate` instances there.  
