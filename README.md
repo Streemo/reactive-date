@@ -24,7 +24,7 @@ Tracker.autorun(function(){
   //this is reactive since we call rDate.now()
   var myFavFormat = rDate.now()
   //this new variable will contain all the methods on Date
-  var yourFavFormat = new Date(unixTimeFormat)
+  var yourFavFormat = new Date(myFavFormat)
   console.log('%s and your favorite format will also log every 120ms', yourFavFormat)
 })
 
