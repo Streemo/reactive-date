@@ -1,9 +1,18 @@
 # reactive-date
 
-**Goal**: Provide a **single** reactive endpoint into the current date via unix-time. From here, other formats and the full blown Date object can be obtained manually; this package is very minimal (8-10 LOC). We do not need to implement reactivity for all of the formats because they are interchangable.
+**Goal**: Provide just one readable endpoint to obtain a reactive date value; usage feeling should mimic `Date.now()`.
+
+**Other Reactive Date Formats?**: Did not implement these since other formats can be obtained manually as `Date` constructor takes unix-time as an argument - and this package provides reactive unix-time.
+
+**Underneath**: Time itself is a poll in certain sense, so use polling interval with configurable period.
+
+**Tip**: The argument to `ReactiveDate` should be on the order of the smallest unit of time you display to the users. For example, if you display time in minutes, then updating the date every 20 minutes will reveal that your displayed date is not in real-time. But updating it every 12 seconds will make it seem as if it is updating in real-time, which is what matters.
 
 ---
-There is one constructor function: `ReactiveDate`. Only two instance methods: `now()`, and `stop()`. If you want a different date format, like ISODate or UTC or something, keep in mind that the forms are equivalent. I prefer the unix-time endpoint. From here, you can do something like `var desiredFormatOrInfo = new Date(1437546993997).useOneOfTheManyUtilityFunctionsProvidedInDateObject`.
+Constructor: `ReactiveDate`.
+Methods: `now`, `stop`.
+---
+
 ## Full API (via example)
 ```
 //argument is number of ms until computation is invalidated
