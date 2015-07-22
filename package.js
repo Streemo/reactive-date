@@ -1,7 +1,6 @@
 Package.describe({
   name: 'streemo:reactive-date',
   version: '0.0.2',
-  // Brief, one-line summary of the package.
   summary: 'Provides a minimal unix time reactive date with a configurable update period.',
   git: '',
   documentation: 'README.md'
