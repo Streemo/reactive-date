@@ -4,9 +4,7 @@
 
 ---
 There is one constructor function: `ReactiveDate`. Only two instance methods: `now()`, and `stop()`. If you want a different date format, like ISODate or UTC or something, keep in mind that the forms are equivalent. I prefer the unix-time endpoint. From here, you can do something like `var desiredFormatOrInfo = new Date(1437546993997).useOneOfTheManyUtilityFunctionsProvidedInDateObject`.
-
-**Full API** via example
-
+## Full API (via example)
 ```
 //argument is number of ms until computation is invalidated
 var rDate = new ReactiveDate(120);
