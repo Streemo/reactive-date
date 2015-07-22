@@ -7,6 +7,7 @@ There is one constructor function: `ReactiveDate`. Only two instance methods: `n
 ## Full API (via example)
 ```
 //argument is number of ms until computation is invalidated
+//defaults to 1000ms
 var rDate = new ReactiveDate(120);
 
 Tracker.autorun(function(){
