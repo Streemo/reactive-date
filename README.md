@@ -10,13 +10,12 @@
 
 ---
 
+## Full API (via example)
+
 Constructor: `ReactiveDate`.
 
 Methods: `now`, `stop`.
 
----
-
-## Full API (via example)
 ```
 //argument is number of ms until computation is invalidated
 //defaults to 1000ms
