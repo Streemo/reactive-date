@@ -9,8 +9,10 @@
 **Tip**: The argument to `ReactiveDate` should be on the order of the smallest unit of time you display to the users. For example, if you display time in minutes, then updating the date every 20 minutes will reveal that your displayed date is not in real-time. But updating it every 12 seconds will make it seem as if it is updating in real-time, which is what matters.
 
 ---
+
 Constructor: `ReactiveDate`.
 Methods: `now`, `stop`.
+
 ---
 
 ## Full API (via example)
