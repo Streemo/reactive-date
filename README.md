@@ -4,7 +4,7 @@
 
 **Other Date Formats?**: Obtain manually as `Date` constructor takes a unix-time argument - and this package provides reactive unix-time.
 
-**Underneath**: Polling interval with configurable period.
+**Underneath**: Polling interval with configurable period. The value is hidden, since `Date.now()` is the preferred way to obtain non-reactive unix-time.
 
 **Tip**: The argument to `ReactiveDate` should at most be on the order of the smallest unit of time you display to the users. Then, it will feel real-time.
 
