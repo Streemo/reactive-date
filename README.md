@@ -1,6 +1,6 @@
 # reactive-date
 
-~ < 10^1 lines.
+~ 10^1 lines.
 
 **Goal**: Provide just one (unix-time) getter obtain reactive date value; should mimic `Date.now()`.
 
