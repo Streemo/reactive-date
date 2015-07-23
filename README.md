@@ -1,5 +1,7 @@
 # reactive-date
 
+~ < 10^1 lines.
+
 **Goal**: Provide just one (unix-time) getter obtain reactive date value; should mimic `Date.now()`.
 
 **Other Date Formats?**: Obtain manually as `Date` constructor takes a unix-time argument - and this package provides reactive unix-time.
